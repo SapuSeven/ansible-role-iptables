@@ -7,6 +7,9 @@
 :PREROUTING ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
+{% for chain in iptables_chains_nat %}
+:{{ chain }} [0:0]
+{% endfor %}
 {% for group in iptables_rules_nat_enabled %}
 {% for rule in (iptables_rules_nat_default|combine(iptables_rules_nat, recursive=True))[group]  %}
 -A {{ rule }}
@@ -21,6 +24,9 @@ COMMIT
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
+{% for chain in iptables_chains %}
+:{{ chain }} [0:0]
+{% endfor %}
 {% for group in iptables_rules_enabled %}
 {% for rule in (iptables_rules_default|combine(iptables_rules, recursive=True))[group]  %}
 -A {{ rule }}

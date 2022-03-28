@@ -4,14 +4,16 @@ iptables_rules_default: {}
 
 ### list of default rulesets - nat table
 iptables_rules_nat_default: {}
-  
 
 ### list of actual rulesets
 # Required for combine filter.
 # Redefine it according to your actuall settings
 iptables_rules: {}
 iptables_rules_nat: {}
-                                                                                     
+
+### custom chains
+iptables_chains: []
+iptables_chains_nat: []
 
 ### enabled rules
 iptables_rules_enabled: []
